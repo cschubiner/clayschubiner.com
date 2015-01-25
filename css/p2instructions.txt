@@ -1,0 +1,21 @@
+Revised mock
+
+	In an ideal world, we would have done a live crit in studio. But we couldn't, because MLK weekend. So you will get your critique delivered briefly in class on Wednesday and in more detail in email soon thereafter. Think through it. Try to understand what the feedback is intending, and  why people are reacting to your designs the way they are. 
+	------->Write one paragraph reporting back the main idea of your critiques, and how you intend to address it. 
+
+	Using your revision sketches, tweak your original mock for the selected design to create a final mock for your portfolio design. As with your previous final mock, this should aim to capture your portfolio as closely as possible, at a near-pixel level. It does not not need to be interactive unless you find that helpful.
+
+Implement your portfolio
+
+	Time to go live! 
+	------->Translate your mock into code using HTML and CSS, as well as Javascript if necessary. 
+	You are welcome to use any front-end web framework you want. However, we advise you to make the web site static: that is, it shouldn't require server software such as Rails, node.js, or PHP. Nearly any portfolio can be implemented using static HTML, CSS and Javascript. Getting a server framework in the loop will eat too much valuable time.
+
+	------->Put a copy of all code in your submission Dropbox.
+
+Submit
+	------->Make a separate subfolder in your P2 submission folder for the Part II deliverable. Put in there:
+		One PDF that contains your crit synthesis and revised mock.
+		A directory containing your entire portfolio's code and assets. We should be able to place this on a server, and it should work.
+		A file containing a link to your live portfolio on the web.
+

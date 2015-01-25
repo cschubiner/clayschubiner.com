@@ -1,0 +1,12 @@
+Font looks quite unfinished throughout site photos, leveraging little use of interaction design besides affordance of navigation. 
+No more than 2 fonts, 3 font-sizes (create a hierarchy),
+
+Try making the site background a dark gray, never black. 
+
+The site has so much color going on that it's getting a bit hard to see everything. 
+
+Look for ways you can get more space in between your paragraphs, less words in descriptions, pictures that have the same color filter so that they match, and use colors that don't match site hues sparingly, and if you're using a dark background look up tricks of making the words read easier than white on dark backgrounds. 
+
+Structurally, this is a single page site--- if you're going to keep it this simple, it has to be magically well kept aesthetically. Is this really the best structure for your work? If you're going to remind me of Atari, can you do it in a novel way? 
+
+Revisit the nav, and Good luck! 

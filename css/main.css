@@ -179,7 +179,8 @@ main {
 #slide-1 .bcg {background-image:url('../img/bcg_slide-1.jpg')}
 
 /* Slide 2 */
-#slide-2 .bcg {background: none; background-color: #010101; text-align: center}
+/*#slide-2 .bcg {background: none; background-color: #010101; text-align: center}*/
+#slide-2 .bcg {background-image:url('../img/bluespace4.jpg')}
 
 /* Slide 3 */
 #slide-3 .bcg {background-image:url('../img/bcg_slide-3.jpg')}
@@ -194,8 +195,8 @@ main {
 
 /* Slide 5 */
 #slide-5 {position: relative;}
-#slide-5 .bcg {background-image:url('../img/bcg_slide-5.jpg')}
-#slide-5 .bcg2 {background-image:url('../img/bcg_slide-5b.jpg'); position: fixed; bottom: 0; left: 0; opacity: 0; z-index: 1}
+#slide-5 .bcg {background-image:url('../img/constructed screenshot no hud.jpg')}
+#slide-5 .bcg2 {background-image:url('../img/constructed screenshotdark.jpg'); position: fixed; bottom: 0; left: 0; opacity: 80; z-index: 1}
 #slide-5 .bcg3 {background: none; background-color: #010101; z-index: 2;  position: fixed; bottom: 0; left: 0; opacity: 0; z-index: 2;}
 
 .hsContainer {
@@ -205,6 +206,11 @@ main {
 	height: 100%;
 	overflow: hidden;
 	position: relative;
+}
+
+.leftAligned {
+    text-align: left;
+
 }
 
 .hsContent {
@@ -225,6 +231,13 @@ main {
 		line-height: 48px;
 		margin-bottom: 12px;
 	}
+    .copy h3 {
+        color: #ffffff;
+        font-size: 45px;
+        line-height: 48px;
+        text-align: left;
+        margin-bottom: 12px;
+    }
 	.hsContent p {
 		width: 400px;
 		margin: 0 auto;
