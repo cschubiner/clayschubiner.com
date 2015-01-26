@@ -12,7 +12,7 @@
  */
 
 ( function( $ ) {
-	
+
 	// Setup variables
 	$window = $(window);
 	$slide = $('.homeSlide');
@@ -21,65 +21,63 @@
 	$body = $('body');
 	htmlbody = $('html,body');
 	var duration = 500;
-	
-    //FadeIn all sections   
+
+    //FadeIn all sections
 	$body.imagesLoaded( function() {
 		setTimeout(function() {
-		      
+
 		      // Resize sections
 		      adjustWindow();
-		      
+
 		      // Init navigation
 		      initHomepageNav();
-		      
+
 		      // Fade in sections
 			  $body.removeClass('loading').addClass('loaded');
-			  
+
 		}, 800);
 	});
-	
+
 	function adjustWindow(){
-		
+
 		// Init Skrollr
 		var s = skrollr.init({
 		    forceHeight: false,
 		    render: function(data) {
-		    
+
 		        //Debugging - Log the current scroll position.
 		        //console.log(data.curTop);
 		    }
 		});
-		
+
 		// Get window size
 	    winH = $window.height();
-	    
+
 	    // Keep minimum height 550
 	    if(winH <= 550) {
 			winH = 550;
-		} 
-	    
+		}
+
 	    // Resize our slides
 	    $slide.height(winH);
 	    $slideTall.height(winH*2);
 	    $slideTall2.height(winH*3);
-	    
+
 	    // Refresh Skrollr after resizing our sections
 	    s.refresh($('.homeSlide'));
-	    
+
 	}
 
 	function initHomepageNav(){
-		
+
 		var homeSlides = $('.homeSlide');
 		var $slideContent = $('.hsContainer');
 		var slidesCount = $(homeSlides).length;
 		var activeSlide = 1;
-		
+
 		// Build HTML for Nav
-		$('<div/>', {
-		    'id' : 'slideNav'
-		}).append($('<ul><li class="slideNavPrev"><a class="disabled" href="#" title="Go to previous slide"><span class="ico ico-up">↑</span></a></li><li><span id="activeSlide">'+activeSlide+'</span>/<span id="maxSlides">'+slidesCount+'</span></li><li class="slideNavNext"><a href="#" title="Go to next slide"><span class="ico ico-down">↓</span></a></li></ul>')).appendTo('body').delay(1200).fadeIn(duration);
-		
+		// $('<div/>', {'id' : 'slideNav'}).append($('<ul><li class="slideNavPrev"><a class="disabled" href="#" title="Go to previous slide"><span class="ico ico-up">↑</span></a></li><li><span id="activeSlide">'+activeSlide+'</span>/<span id="maxSlides">'+slidesCount+'</span></li><li class="slideNavNext"><a href="#" title="Go to next slide"><span class="ico ico-down">↓</span></a></li></ul>')).appendTo('body').delay(1200).fadeIn(duration);
+
 
 		// Navigation highligting
 		var $activeSlide = $('#activeSlide');
@@ -87,10 +85,10 @@
 		var $numberOfSlides = parseInt($maxSlides.text());
 		var slideNavPrev = $('');
 		var $slideNavNext = $('.slideNavNext');
-		var $slideNavPrev = $('.slideNavPrev');	
+		var $slideNavPrev = $('.slideNavPrev');
 		var $slideNavNextA = $('.slideNavNext a');
-		var $slideNavPrevA = $('.slideNavPrev a');	
-		
+		var $slideNavPrevA = $('.slideNavPrev a');
+
 		// Highlight the section currently scrolling DOWN
 		homeSlides.waypoint(function(direction) {
 		  if (direction === 'down') {
@@ -100,7 +98,7 @@
 			showHideNavItems();
 		  }
 		}, { offset: '50%' });
-		
+
 		// Highlight the section currently scrolling UP
 		homeSlides.waypoint(function(direction) {
 		  if (direction === 'up') {
@@ -116,91 +114,96 @@
 		    return $.waypoints('viewportHeight') / 2 - $(this).outerHeight();
 		  }
 		});
-		
+
 		//Fade out unnecesary nav items
 		function showHideNavItems(){
 			var $activeSlideNumber = parseInt($activeSlide.text());
-			
+
 			if($activeSlideNumber == 1){
-			
+
 				$slideNavNextA.removeAttr('class');
 				$slideNavPrev.animate({opacity: 0.25}).find('a').addClass('disabled');
-				
+
 			} else if ($activeSlideNumber == $numberOfSlides) {
-			
+
 				$slideNavPrevA.removeAttr('class');
 				$slideNavNext.animate({opacity: 0.25}).find('a').addClass('disabled');
-				
+
 			} else {
-			
+
 				$slideNavNext.add($slideNavPrev).animate({opacity: 1});
 				$slideNavNextA.add($slideNavPrevA).removeAttr('class');
-				
+
 			}
-		}	
-		
+		}
+
 		//Next slide
 		$slideNavNext.click(function (e) {
 		    e.preventDefault();
 		    var index = parseInt($activeSlide.text());
 		    index++;
 		    if(index <= $numberOfSlides){
-		        
+
 				scrollToSlide(index);
-		        
+
 		    }
 		});
-		
+
+		$("#starStreamLink").click(function (e) {
+		    e.preventDefault();
+    		scrollToSlide(5);
+    	});
+
 		//Prev slide
 		$slideNavPrev.click(function (e) {
 		    e.preventDefault();
 		    var index = parseInt($activeSlide.text());
 		    index--;
 		    if(index > 0){
-		        
+
 		        scrollToSlide(index);
-		        
+
 		    }
 		});
-	    
-	    
+
+
 		function scrollToSlide(slideId){
-			
+
 			// Custom slide content offset
 		    var customSlideOffset = $("#slide-"+slideId).attr('data-content-offset');
-		    
-		    
+
+
 		    // Scroll to the top of a container if it doesn't have custom offset defined
 		    if(typeof customSlideOffset === 'undefined'){
-		        
+
 		        htmlbody.animate({scrollTop: ($("#slide-"+slideId).offset().top) + 'px'},'slow');
-		        
+
 		    } else {
-		        
+
 		        // Convert percentage 'eg. 25p' into pixels
 		        if(customSlideOffset.indexOf('p')!=-1) {
-			       
+
 			       var customSlideOffset = parseInt(customSlideOffset.split('p')[0]);
 				   var slideHeight = $slide.height();
-				   
+
 				   customSlideOffset = Math.ceil((slideHeight/100) * customSlideOffset);
-				   
+
 				   //console.log(slideHeight +' '+ customSlideOffset);
-				   
+
 				   htmlbody.animate({scrollTop: ($("#slide-"+slideId).offset().top + customSlideOffset) + 'px'},'slow');
-			        
+
 		        } else {
-			       
+
 			       var customSlideOffset = parseInt(customSlideOffset);
-			       
+
 			       htmlbody.animate({scrollTop: ($("#slide-"+slideId).offset().top + customSlideOffset) + 'px'},'slow');
-			        
+
 		        }
-		    
+
 		    }
 		}
-	    
-	    
+
+
 	}
-		
+
 } )( jQuery );
